@@ -1,11 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import MainScreen from "./views/MainScreen";
+import IntroScreen from "./views/IntroScreen";
 
 export default function App() {
+  const [isLoading, setLoading] = useState(false);
+
+  setTimeout(() => {
+    setLoading(true);
+  }, 2000);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {isLoading ? <MainScreen /> : <IntroScreen />}
     </View>
   );
 }
@@ -13,8 +20,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
